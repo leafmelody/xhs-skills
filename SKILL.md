@@ -11,7 +11,7 @@ metadata:
         - python3
         - uv
     emoji: "\U0001F4D5"
-    homepage: https://github.com/xpzouying/xiaohongshu-skills
+    homepage: https://github.com/leafmelody/xhs-skills
     os:
       - darwin
       - linux
@@ -102,36 +102,32 @@ metadata:
 
 ## 快速开始
 
-```bash
-# 1. 启动 Chrome
-python scripts/chrome_launcher.py
+> 运行前请确保 **BitBrowser 已启动**（API 端口 54345）且 **已登录小红书账号**。
 
-# 2. 检查登录状态
+```bash
+# 1. 检查登录状态
 python scripts/cli.py check-login
 
-# 3. 登录（如需要）
-python scripts/cli.py login
-
-# 4. 搜索笔记
+# 2. 搜索笔记
 python scripts/cli.py search-feeds --keyword "关键词"
 
-# 5. 查看笔记详情
+# 3. 查看笔记详情
 python scripts/cli.py get-feed-detail \
   --feed-id FEED_ID --xsec-token XSEC_TOKEN
 
-# 6. 发布图文
+# 4. 发布图文
 python scripts/cli.py publish \
   --title-file title.txt \
   --content-file content.txt \
   --images "/abs/path/pic1.jpg"
 
-# 7. 发表评论
+# 5. 发表评论
 python scripts/cli.py post-comment \
   --feed-id FEED_ID \
   --xsec-token XSEC_TOKEN \
   --content "评论内容"
 
-# 8. 点赞
+# 6. 点赞
 python scripts/cli.py like-feed \
   --feed-id FEED_ID --xsec-token XSEC_TOKEN
 ```
@@ -139,6 +135,6 @@ python scripts/cli.py like-feed \
 ## 失败处理
 
 - **未登录**：提示用户执行登录流程（xhs-auth）。
-- **Chrome 未启动**：使用 `chrome_launcher.py` 启动浏览器。
+- **BitBrowser 未启动**：启动 BitBrowser 并确保小红书页面已打开。
 - **操作超时**：检查网络连接，适当增加等待时间。
 - **频率限制**：降低操作频率，增大间隔。
