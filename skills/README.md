@@ -1,6 +1,6 @@
 # 小红书自动化 Skills
 
-完整复刻 [xiaohongshu-mcp](https://github.com/xpzouying/xiaohongshu-mcp) 的 11 个工具功能，基于 xiaohongshu-skills + BitBrowser CDP 实现。
+小红书自动化 Skills，基于 BitBrowser CDP 实现。复刻了原 MCP 的 11 个工具功能。
 
 ## 核心特性
 
