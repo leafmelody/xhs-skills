@@ -4,7 +4,15 @@ version = "0.1.0"
 description = "小红书自动化 Skills，基于 CDP 浏览器自动化"
 readme = "README.md"
 license = { text = "MIT" }
+authors = [
+    { name = "Auto-Claw-CC", url = "https://github.com/autoclaw-cc" },
+    { name = "leafmelody", url = "https://github.com/leafmelody" },
+]
 requires-python = ">=3.11"
+
+[project.urls]
+Homepage = "https://github.com/leafmelody/xhs-skills"
+Source = "https://github.com/autoclaw-cc/xiaohongshu-skills"
 dependencies = [
     "requests>=2.28.0",
     "websockets>=12.0",

@@ -1,5 +1,8 @@
 # xiaohongshu-skills
 
+> 本项目是 [autoclaw-cc/xiaohongshu-skills](https://github.com/autoclaw-cc/xiaohongshu-skills) 的二次开发分支。  
+> 当前实现已将上游的 Chrome Extension Bridge 架构替换为 **BitBrowser CDP Python** 方案。
+
 小红书自动化 Claude Code Skills，使用用户的真实浏览器和账号信息操作小红书。
 
 ## Git 工作流
@@ -21,9 +24,7 @@ uv run pytest              # 运行测试
 双层结构：`scripts/` 是 Python 自动化引擎，`skills/` 是 Claude Code Skills 定义（SKILL.md 格式）。
 
 - `scripts/xhs/` — 核心自动化库（模块化，每个功能一个文件）
-- `scripts/cli.py` — 统一 CLI 入口，JSON 结构化输出，自动启动 bridge server 和浏览器
-- `scripts/bridge_server.py` — 本地通信服务（连接 CLI 与浏览器扩展）
-- `extension/` — Chrome 扩展，在用户的真实浏览器中执行操作
+- `scripts/cli.py` — 统一 CLI 入口，JSON 结构化输出
 - `skills/*/SKILL.md` — 指导 Claude 如何调用 scripts/
 
 ### 调用方式
@@ -34,7 +35,7 @@ python scripts/cli.py search-feeds --keyword "关键词"
 python scripts/cli.py publish --title-file t.txt --content-file c.txt --images pic.jpg
 ```
 
-> CLI 会自动检测环境，若浏览器未打开也会自动启动 Chrome。
+> 运行前需确保 BitBrowser 已启动并登录小红书账号。
 
 ## 代码规范
 
