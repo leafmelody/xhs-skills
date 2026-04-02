@@ -1,0 +1,45 @@
+name: xhs_search_notes
+description: |
+  搜索小红书笔记，支持自然语言参数。
+  示例：
+  - "搜索高中数学最火的图文笔记，返回前5条"
+  - "查找Python学习视频，按最多点赞排序"
+  - "搜索一周内发布的健身图文，采集10条"
+
+input_schema:
+  type: object
+  properties:
+    keyword:
+      type: string
+      description: 搜索关键词
+    sort_by:
+      type: string
+      description: 排序方式
+      enum: [综合, 最新, 最多点赞, 最多评论, 最多收藏]
+      default: 最多收藏
+    note_type:
+      type: string
+      description: 笔记类型
+      enum: [不限, 视频, 图文]
+      default: 图文
+    publish_time:
+      type: string
+      description: 发布时间
+      enum: [不限, 一天内, 一周内, 半年内]
+      default: 一周内
+    limit:
+      type: integer
+      description: 返回结果数量
+      default: 5
+      minimum: 1
+      maximum: 20
+  required: [keyword]
+
+examples:
+  - input:
+      keyword: 高中数学
+      sort_by: 最多收藏
+      note_type: 图文
+      publish_time: 一周内
+      limit: 5
+    description: 搜索高中数学相关图文笔记，按收藏数排序
