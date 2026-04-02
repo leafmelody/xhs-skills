@@ -1,0 +1,11 @@
+name: xhs_check_login
+description: |
+  检查小红书登录状态，返回是否已登录及当前用户信息。
+
+input_schema:
+  type: object
+  properties: {}
+
+examples:
+  - input: {}
+    description: 检查当前登录状态

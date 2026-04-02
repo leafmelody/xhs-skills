@@ -1,0 +1,33 @@
+name: xhs_get_feed_detail
+description: |
+  获取小红书帖子完整详情，包括正文、图片、互动数据及评论列表。
+  需要配合 search 或 get_feeds 获取的 feed_id 和 xsec_token 使用。
+
+input_schema:
+  type: object
+  properties:
+    feed_id:
+      type: string
+      description: 帖子 ID
+    xsec_token:
+      type: string
+      description: 安全令牌
+    load_comments:
+      type: boolean
+      description: 是否加载评论
+      default: true
+    max_comments:
+      type: integer
+      description: 最大评论数量（0=不限）
+      default: 20
+      minimum: 0
+      maximum: 100
+  required: [feed_id, xsec_token]
+
+examples:
+  - input:
+      feed_id: "69c64eff000000002100459f"
+      xsec_token: "ABKgBuFBZhgQZRAbtlr_Fq0rt1wNGklKHnXle5g7awcgY="
+      load_comments: true
+      max_comments: 20
+    description: 获取帖子详情及评论

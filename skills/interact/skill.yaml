@@ -1,0 +1,32 @@
+name: xhs_interact
+description: |
+  小红书帖子互动操作：点赞、取消点赞、收藏、取消收藏。
+  智能检测当前状态，避免重复操作。
+
+input_schema:
+  type: object
+  properties:
+    feed_id:
+      type: string
+      description: 帖子 ID
+    xsec_token:
+      type: string
+      description: 安全令牌
+    action:
+      type: string
+      description: 操作类型
+      enum: [like, unlike, favorite, unfavorite]
+      default: like
+  required: [feed_id, xsec_token]
+
+examples:
+  - input:
+      feed_id: "69c64eff000000002100459f"
+      xsec_token: "xxx"
+      action: "like"
+    description: 点赞帖子
+  - input:
+      feed_id: "69c64eff000000002100459f"
+      xsec_token: "xxx"
+      action: "favorite"
+    description: 收藏帖子

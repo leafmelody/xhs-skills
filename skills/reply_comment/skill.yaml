@@ -1,0 +1,34 @@
+name: xhs_reply_comment
+description: |
+  回复小红书帖子下的指定评论。
+
+input_schema:
+  type: object
+  properties:
+    feed_id:
+      type: string
+      description: 帖子 ID
+    xsec_token:
+      type: string
+      description: 安全令牌
+    content:
+      type: string
+      description: 回复内容
+      maxLength: 1000
+    comment_id:
+      type: string
+      description: 评论 ID（优先使用）
+      default: ""
+    user_id:
+      type: string
+      description: 用户 ID（备选）
+      default: ""
+  required: [feed_id, xsec_token, content]
+
+examples:
+  - input:
+      feed_id: "69c64eff000000002100459f"
+      xsec_token: "xxx"
+      comment_id: "67c8a1b2000000000e012345"
+      content: "谢谢你的评论！"
+    description: 回复指定评论

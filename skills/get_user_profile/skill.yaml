@@ -1,0 +1,27 @@
+name: xhs_get_user_profile
+description: |
+  获取小红书用户主页信息，包括用户基本信息、统计数据和发布的笔记列表。
+
+input_schema:
+  type: object
+  properties:
+    user_id:
+      type: string
+      description: 用户 ID
+    xsec_token:
+      type: string
+      description: 安全令牌
+    limit:
+      type: integer
+      description: 返回笔记数量限制
+      default: 20
+      minimum: 1
+      maximum: 50
+  required: [user_id, xsec_token]
+
+examples:
+  - input:
+      user_id: "5f3c8b9a000000000101f1e0"
+      xsec_token: "xxx"
+      limit: 10
+    description: 获取用户主页信息

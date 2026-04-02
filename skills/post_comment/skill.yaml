@@ -1,0 +1,25 @@
+name: xhs_post_comment
+description: |
+  发表评论到小红书帖子。
+
+input_schema:
+  type: object
+  properties:
+    feed_id:
+      type: string
+      description: 帖子 ID
+    xsec_token:
+      type: string
+      description: 安全令牌
+    content:
+      type: string
+      description: 评论内容
+      maxLength: 1000
+  required: [feed_id, xsec_token, content]
+
+examples:
+  - input:
+      feed_id: "69c64eff000000002100459f"
+      xsec_token: "xxx"
+      content: "写得太好了，感谢分享！"
+    description: 发表评论

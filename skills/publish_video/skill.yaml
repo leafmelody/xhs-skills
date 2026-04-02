@@ -1,0 +1,41 @@
+name: xhs_publish_video
+description: |
+  发布小红书视频内容。仅支持本地视频文件，自动处理视频格式转换。
+
+input_schema:
+  type: object
+  properties:
+    title:
+      type: string
+      description: 标题（不超过20字）
+      maxLength: 20
+    content:
+      type: string
+      description: 正文内容（不超过1000字）
+      maxLength: 1000
+    video_path:
+      type: string
+      description: 视频文件路径（本地绝对路径，必填）
+    tags:
+      type: array
+      description: 标签列表（可选，最多10个）
+      items:
+        type: string
+      maxItems: 10
+    schedule_time:
+      type: string
+      description: 定时发布时间（ISO8601格式）
+    visibility:
+      type: string
+      description: 可见范围
+      enum: ["", "公开可见", "仅自己可见", "仅互关好友可见"]
+      default: ""
+  required: [title, content, video_path]
+
+examples:
+  - input:
+      title: "我的vlog"
+      content: "今天记录了美好的一天"
+      video_path: "/Users/me/videos/day1.mp4"
+      tags: ["vlog", "日常"]
+    description: 发布视频笔记

@@ -1,0 +1,50 @@
+name: xhs_publish_image
+description: |
+  发布小红书图文内容。支持本地图片上传、定时发布、原创声明等功能。
+
+input_schema:
+  type: object
+  properties:
+    title:
+      type: string
+      description: 标题（不超过20字）
+      maxLength: 20
+    content:
+      type: string
+      description: 正文内容（不超过1000字）
+      maxLength: 1000
+    image_paths:
+      type: array
+      description: 图片路径列表（本地绝对路径）
+      items:
+        type: string
+      minItems: 1
+      maxItems: 18
+    tags:
+      type: array
+      description: 标签列表（可选，最多10个）
+      items:
+        type: string
+      maxItems: 10
+    schedule_time:
+      type: string
+      description: 定时发布时间（ISO8601格式，如 2025-12-01T10:00:00）
+    is_original:
+      type: boolean
+      description: 是否声明原创
+      default: false
+    visibility:
+      type: string
+      description: 可见范围
+      enum: ["", "公开可见", "仅自己可见", "仅互关好友可见"]
+      default: ""
+  required: [title, content, image_paths]
+
+examples:
+  - input:
+      title: "我的旅行日记"
+      content: "今天去了故宫，太壮观了！"
+      image_paths: ["/Users/me/photos/1.jpg", "/Users/me/photos/2.jpg"]
+      tags: ["旅行", "故宫", "北京"]
+      is_original: true
+    description: 发布图文笔记
